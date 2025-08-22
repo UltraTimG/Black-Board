@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Blackboard</title>
+<style>
+:root {
+    --bg-dark: #222831;
+    --text-dark: #f8f8f2;
+    --header-dark: #181c1b;
+    --bg-dark: #181c1b;
+    --nav-dark: #232b20;
+    --chalk-shadow: 0 2px 8px #00ff0033, 0 1px 0 #000, 0 0 2px #fff4;
+    --chalk-white: #f8f8f2;
+    --chalk-green: #b6ffb6;
+    --chalk-yellow: #fff9b1;
+    --chalk-blue: #b1e0ff;
+    --chalk-pink: #ffb1e0;
+    --chalk-shadow: 0 2px 8px #00ff0033, 0 1px 0 #000, 0 0 2px #fff2;
+    --nav-dark: #393e46;
+    --accent-dark: #00ff00;
+    --bg-light: #fff;
+    --text-light: #111;
+    --header-light: #f5f5f5;
+    --nav-light: #e0e0e0;
+    --accent-light: #008000;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-light);
+    color: var(--text-light);
+    transition: background 0.3s, color 0.3s;
+}
+
+header {
+    color: var(--text-light);
+    padding: 1rem 0;
+    text-align: center;
+    background: var(--header-light);
+    font-size: 2rem;
+    letter-spacing: 2px;
+    box-shadow: 0 2px 8px #0001;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+nav a {
+    color: var(--accent-light);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover {
+    background: var(--accent-light);
+    color: #fff;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 2.5rem;
+    text-shadow: 0 2px 8px #0001;
+}
+
+p {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.query-container, .calendar-container, .grades-container, .focus-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2.5rem auto 0 auto;
+    max-width: 500px;
+    width: 90%;
+    background: #f8f8f8cc;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px #00800022;
+    padding: 2rem 1.5rem;
+}
+
+.query-container label,
+.calendar-container label,
+.grades-container label,
+.focus-container label {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-light);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.query-container textarea,
+.calendar-container input[type="text"],
+.grades-container input[type="text"],
+.grades-container input[type="number"],
+.focus-container input[type="number"] {
+    width: 100%;
+    min-height: 40px;
+    max-height: 200px;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1.5px solid #ccc;
+    font-size: 1.1rem;
+    resize: vertical;
+    background: #fff;
+    color: #111;
+    box-shadow: 0 1px 2px #0001;
+    margin-bottom: 1rem;
+    transition: border 0.2s;
+}
+
+.query-container textarea:focus,
+.calendar-container input[type="text"]:focus,
+.grades-container input[type="text"]:focus,
+.grades-container input[type="number"]:focus,
+.focus-container input[type="number"]:focus {
+    border: 1.5px solid var(--accent-light);
+    outline: none;
+}
+
+.query-container button,
+.calendar-container button,
+.grades-container button,
+.focus-container button {
+    padding: 0.6rem 2.2rem;
+    background-color: var(--accent-light);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.15rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #00800022;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+}
+
+.query-container button:hover,
+.calendar-container button:hover,
+.grades-container button:hover,
+.focus-container button:hover {
+    background: #006400;
+}
+
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1rem 0;
+    color: #888;
+    font-size: 0.95rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: var(--bg-dark);
+        color: var(--text-dark);
+    }
+    header {
+        background: var(--header-dark);
+        color: var(--accent-dark);
+        text-shadow: 0 0 8px #00ff0055;
+        border-bottom: 2px solid #00ff00;
+    }
+    nav {
+        background: var(--nav-dark);
+        border-radius: 8px;
+        box-shadow: 0 2px 8px #0006;
+    }
+    nav a {
+        color: var(--accent-dark);
+        background: transparent;
+    }
+    nav a:hover {
+        background: var(--accent-dark);
+        color: #222831;
+    }
+    h1 {
+        text-shadow: 0 2px 8px #00ff0033;
+    }
+    .query-container, .calendar-container, .grades-container, .focus-container {
+        background: #232b33cc;
+        box-shadow: 0 2px 12px #00ff0022;
+    }
+    .query-container textarea,
+    .calendar-container input[type="text"],
+    .grades-container input[type="text"],
+    .grades-container input[type="number"],
+    .focus-container input[type="number"] {
+        background: #232b33;
+        color: #f8f8f2;
+        border: 1.5px solid #393e46;
+    }
+    .query-container button,
+    .calendar-container button,
+    .grades-container button,
+    .focus-container button {
+        background: var(--accent-dark);
+        color: #222831;
+    }
+    .query-container button:hover,
+    .calendar-container button:hover,
+    .grades-container button:hover,
+    .focus-container button:hover {
+        background: #00cc00;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: repeating-linear-gradient(
+            180deg,
+            #222831 0px,
+            #222831 28px,
+            #232b33 29px,
+            #222831 30px
+        );
+    }
+    h1, p, nav a, footer, header {
+        text-shadow: 0 1px 0 #000, 0 0 8px #00ff0033;
+    }
+}
+@media (prefers-color-scheme: light) {
+    body {
+        background: repeating-linear-gradient(
+            180deg,
+            #fff 0px,
+            #fff 28px,
+            #f5f5f5 29px,
+            #fff 30px
+        );
+    }
+    h1, p, nav a, footer, header {
+        text-shadow: 0 1px 0 #fff, 0 0 8px #00800022;
+    }
+}
+</style>
+</head>
+<body>
+    <header>Blackboard</header>
+    <h1>Welcome to Blackboard!</h1>
+
+    <nav>
+        <a href="login">login</a>
+        <a href="register">register</a>
+    </nav>
+
+    <p>{{msg}}</p>
+
+    <div class="focus-container">
+        <form method="post" action="/">
+            <label for="focus_time">Focus Timer (minutes):</label>
+            <input type="number" id="focus_time" name="focus_time" min="1" max="180" placeholder="Enter minutes">
+            <button type="submit">Start Timer</button>
+        </form>
+        {% if focus_msg %}
+            <div style="margin-top:1rem; color:var(--accent-light); font-weight:bold;">{{focus_msg}}</div>
+        {% endif %}
+        <div style="margin-top:1rem;">
+            <strong>Your Focus Times:</strong>
+            <ul>
+                {% for t in focus_times %}
+                    <li>{{t}} minutes</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="grades-container">
+        <form method="post" action="/">
+            <label for="grade_input">Grades Input:</label>
+            <input type="text" id="grade_input" name="grade_input" placeholder="e.g. Math: 95, English: 88">
+            <button type="submit">Save Grades</button>
+        </form>
+        {% if grades_msg %}
+            <div style="margin-top:1rem; color:var(--accent-light); font-weight:bold;">{{grades_msg}}</div>
+        {% endif %}
+        <div style="margin-top:1rem;">
+            <strong>Your Grades:</strong>
+            <ul>
+                {% for g in grades %}
+                    <li>{{g}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="calendar-container">
+        <form method="post" action="/">
+            <label for="event">Add to your calendar:</label>
+            <input type="text" id="event" name="event" placeholder="e.g. Math test on Friday">
+            <button type="submit">Add Event</button>
+        </form>
+        {% if event_msg %}
+            <div style="margin-top:1rem; color:var(--accent-light); font-weight:bold;">{{event_msg}}</div>
+        {% endif %}
+        <div style="margin-top:1rem;">
+            <strong>Your Calendar:</strong>
+            <ul>
+                {% for e in calendar %}
+                    <li>{{e}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="query-container">
+        <form onsubmit="handleFormSubmission(event)">
+            <label for="user_query">Ask a question or enter your query:</label>
+            <textarea id="user_query" name="user_query" placeholder="Type your query here..."></textarea>
+            <button type="submit">Send</button>
+        </form>
+        {% if ai_response %}
+            <div style="margin-top:1rem; color:var(--accent-light); font-weight:bold;">{{ai_response | safe}}</div>
+        {% endif %}
+    </div>
+</body>
+
+    <script>
+        const handleFormSubmission = async (event) => {
+            event.preventDefault(); // prevent reloading the page
+            // validate user data
+
+            try {
+                const response = await fetch('/ask_ai', {
+                    method: 'POST',
+                    body: new FormData(event.target)
+                });
+            } catch (error) {
+                
+            }
+        }
+    </script>
+
+    <footer>
+        &copy; 2025 Blackboard. All rights reserved.
+    </footer>
